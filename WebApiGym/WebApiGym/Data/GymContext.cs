@@ -16,6 +16,8 @@ namespace WebApiGym.Data
         public DbSet<tb_usuario> tb_Usuario { get; set; }
         public DbSet<vistaCentro> centroInfo { get; set; }
 
+        public DbSet<tb_control> ControlInfo { get; set; }
+
         //public DbSet<queryLoginResult> loginQueryResult { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
