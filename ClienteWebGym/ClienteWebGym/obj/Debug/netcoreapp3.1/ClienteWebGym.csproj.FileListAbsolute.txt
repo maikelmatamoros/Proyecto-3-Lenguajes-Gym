@@ -106,6 +106,10 @@ C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\bin\Debug\netcoreapp3.1
 C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\ClienteGymList.cshtml.g.cs
+C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\LoginView.cshtml.g.cs
 C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\ClienteWebGym.csproj.CoreCompileInputs.cache
 C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\ClienteWebGym.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\ClienteGymList.cshtml.g.cs
+C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs
+C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\UsuarioMainView.cshtml.g.cs
+C:\Users\Maikel\source\repos\ClienteWebGym\ClienteWebGym\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutUsuario.cshtml.g.cs
