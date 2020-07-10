@@ -18,6 +18,8 @@ namespace WebApiGym.Data
 
         public DbSet<tb_control> ControlInfo { get; set; }
 
+        public DbSet<ControlHorarios> ControlI { get; set; }
+
         //public DbSet<queryLoginResult> loginQueryResult { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

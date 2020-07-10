@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Maikel\\source\\repos\\WebApiGym\\WebApiGym\\WebApiGym.csproj": {}
+    "C:\\Users\\Maikel\\Desktop\\Proyecto 3 Lenguajes Gym\\WebApiGym\\WebApiGym\\WebApiGym.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Maikel\\source\\repos\\WebApiGym\\WebApiGym\\WebApiGym.csproj": {
+    "C:\\Users\\Maikel\\Desktop\\Proyecto 3 Lenguajes Gym\\WebApiGym\\WebApiGym\\WebApiGym.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Maikel\\source\\repos\\WebApiGym\\WebApiGym\\WebApiGym.csproj",
+        "projectUniqueName": "C:\\Users\\Maikel\\Desktop\\Proyecto 3 Lenguajes Gym\\WebApiGym\\WebApiGym\\WebApiGym.csproj",
         "projectName": "WebApiGym",
-        "projectPath": "C:\\Users\\Maikel\\source\\repos\\WebApiGym\\WebApiGym\\WebApiGym.csproj",
+        "projectPath": "C:\\Users\\Maikel\\Desktop\\Proyecto 3 Lenguajes Gym\\WebApiGym\\WebApiGym\\WebApiGym.csproj",
         "packagesPath": "C:\\Users\\Maikel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Maikel\\source\\repos\\WebApiGym\\WebApiGym\\obj\\",
+        "outputPath": "C:\\Users\\Maikel\\Desktop\\Proyecto 3 Lenguajes Gym\\WebApiGym\\WebApiGym\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

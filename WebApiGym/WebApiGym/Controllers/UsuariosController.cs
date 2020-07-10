@@ -18,12 +18,10 @@ namespace WebApiGym.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly GymContext _context;
-        //private readonly QueryContext _query;
 
         public UsuariosController(GymContext context)
         {
             _context = context;
-            //_query = query;
         }
 
         //Petición tipo Get: api/Usuarios
@@ -43,7 +41,7 @@ namespace WebApiGym.Controllers
 
         [Route("[action]/")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<tb_control>>> ObtenerOcupacion(int id,String fecha)
+        public async Task<ActionResult<IEnumerable<ControlHorarios>>> ObtenerOcupacion(int id,String fecha)
         {
             var idI = new SqlParameter
             {
@@ -56,7 +54,7 @@ namespace WebApiGym.Controllers
                 ParameterName = "fecha",
                 Value = fecha
             };
-            return await _context.ControlInfo.FromSqlRaw("sp_getHorarios @id,@fecha", idI,fechaI).ToListAsync();
+            return await _context.ControlI.FromSqlRaw("sp_getHorarios @id,@fecha", idI,fechaI).ToListAsync();
         }
 
 
@@ -90,6 +88,34 @@ namespace WebApiGym.Controllers
             var resultado= await _context.Database.ExecuteSqlRawAsync("sp_loginToCentro @id,@usuario,@pass,@result output", idI, usuarioI, passI,resutl);
             return (String)resutl.Value;
         }
+
+        [Route("[action]/")]
+        [HttpPost]
+        public async Task<ActionResult<String>> Reservar([FromBody]ReservarModel rm)
+        {
+
+            var idI = new SqlParameter
+            {
+                ParameterName = "id",
+                Value = rm.idH
+            };
+
+            var usuarioI = new SqlParameter
+            {
+                ParameterName = "usuario",
+                Value = rm.usuario
+            };
+
+
+            var resultado = await _context.Database.ExecuteSqlRawAsync("sp_reservar @usuario,@idH",  usuarioI, idI);
+            
+            
+            
+            return rm.usuario;
+        }
+
+
+
 
 
 

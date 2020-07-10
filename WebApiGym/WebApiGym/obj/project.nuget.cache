@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VoHy7PCyaOvJJu+BTckAgZgOJmxiGRlq1f+M3+V9sl/ReuBsGBHTREGEYum/lZtUJepLt2I8eAd9T/VuSOTtaQ==",
+  "dgSpecHash": "Mj/LVo34G0MIZrJQDu1kTkvwlefZspK9K+f+2YlhO1zKERrz4cEAIP77eUPvB59io7siu/4rl2F9sUeMeTjzgg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Maikel\\source\\repos\\WebApiGym\\WebApiGym\\WebApiGym.csproj",
+  "projectFilePath": "C:\\Users\\Maikel\\Desktop\\Proyecto 3 Lenguajes Gym\\WebApiGym\\WebApiGym\\WebApiGym.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maikel\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Maikel\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
