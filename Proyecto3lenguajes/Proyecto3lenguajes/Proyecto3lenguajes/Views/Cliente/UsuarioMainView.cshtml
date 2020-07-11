@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = "_LayoutUsuario";
+}
+
+
+<div class="row">
+    <div class="card col-sm-6 col-md-6 col-lg-6 py-2" style="background-color: rgba(10, 129, 16,0.4) !important; border-radius: 20px;">
+        <div class="card-body">
+            <div class="col-12">
+                <label for="usr">Seleccione una fecha</label>
+                <input class="form-control" type="text" name="date" id="date" />
+                <button class="btn btn-primary col-12" style="margin-top:3%;" id="Consultar">Consultar</button>
+            </div>
+            <div class="col-12" style="margin-top:3%;" id="HorariosDiv"></div>
+            <div class="col-12" style="margin-top:3%;">
+                <button class="btn btn-primary col-12" id="Reservar">Reservar</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container col-md-5 col-sm-5">
+        <div class="table-responsive">
+            <table id="HorariosTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Horario</th>
+                        <th>Cupos</th>
+                        <th>Reservar</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+    <script src="~/js/ReservasMainClient.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

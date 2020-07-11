@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "CentroInfoView";
+    Layout = "_LayoutUsuario";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="col-md-12">Información de Centro de Entrenamiento</h1>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-5" style="background-color: rgba(10, 129, 16,0.4) !important; border-radius: 20px;">
+        <h5 class="col-md-12" id="nombre"></h5>
+        <h5 class="col-md-12" id="descripcion"></h5>
+        <h5 class="col-md-12" id="ubicacion"></h5>
+        <div class="col-md-12" id="logo"></div>
+
+    </div>
+
+    <div class="col-md-8 col-sm-8 center-block" id="img">
+        
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2 style="margin-left:auto;margin-right:auto;color:white;">Lista de clases futuras</h2>
+    </div>
+    <div class="container col-12">
+        <div class="table-responsive">
+            <table id="ClasesVirtualesTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>Horario</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Transmision</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/CentroInfo.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

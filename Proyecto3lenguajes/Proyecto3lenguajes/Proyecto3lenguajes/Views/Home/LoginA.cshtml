@@ -1,0 +1,106 @@
+﻿@model Proyecto3lenguajes.Models.Administrador
+
+@{
+    ViewData["Title"] = "LoginA";
+
+}
+
+<h1>LoginA</h1>
+
+<h4>Administrador</h4>
+<hr />
+@*<div class="card-header">Busca Tu Alojamiento</div>
+    <div class="card-body">
+        <div class="form-group" style="margin: auto;">*@
+
+
+
+<div class="row justify-content-center">
+    <div class="card ">
+
+        <div class="card-body " style="background-color:rgb(10, 129, 16); background-repeat: no-repeat; background-attachment: fixed; opacity:0.81;">
+            <form form class="form" id="LoginA">
+                <div asp-validation-summary="ModelOnly" class="text-danger" style="background-color:rgb(10, 129, 16); background-repeat: no-repeat; background-attachment: fixed; opacity:0.81;"></div>
+
+                <div class="form-group ">
+
+
+                    <input asp-for="nombre_negocio" class="form-control form-control-lg" type="text" placeholder="Nombre Gym" />
+                    <span asp-validation-for="nombre_negocio" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="pass" class="form-control form-control-lg" type="text" placeholder="Contraseña" />
+                    <span asp-validation-for="pass" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="descripcion" class="form-control form-control-lg" type="text" placeholder="Descripcion" />
+                    <span asp-validation-for="descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="ubicacion" class="form-control form-control-lg" type="text" placeholder="Ubicacion" />
+                    <span asp-validation-for="ubicacion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="telefono" class="form-control form-control-lg" type="tel" placeholder="telefono" />
+                    <span asp-validation-for="telefono" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="correo" class="form-control form-control-lg" type="email" placeholder="Correo" />
+                    <span asp-validation-for="correo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="capacidad" class="form-control form-control-lg" type="text" placeholder="Capacidad" />
+                    <span asp-validation-for="capacidad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="porcentaje" class="form-control form-control-lg" type="text" placeholder="Porcentaje" />
+                    <span asp-validation-for="porcentaje" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="horaI" class="form-control form-control-lg" type="text" placeholder="Hora Apertura" />
+                    <span asp-validation-for="horaI" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="horaC" class="form-control form-control-lg" type="text" placeholder="Hora de Cierre" />
+                    <span asp-validation-for="horaC" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input asp-for="logo" />
+                    <span asp-validation-for="logo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input multiple asp-for="imagenes" />
+                    <span asp-validation-for="imagenes" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

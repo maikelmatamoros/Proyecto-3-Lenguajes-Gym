@@ -1,123 +1,313 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlTypes;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using WebApiGym.Data;
 using WebApiGym.Models;
 
 namespace WebApiGym.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        private readonly GymContext _context;
-
-        public UsuariosController(GymContext context)
-        {
-            _context = context;
-        }
-
-        //Petición tipo Get: api/Usuarios
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<tb_usuario>>> GetUsuariosItems()
-        {
+        public IConfiguration Configuration { get; }
+        private readonly SqlConnection conn;
         
-            return await _context.tb_Usuario.FromSqlRaw<tb_usuario>("sp_getUsers").ToListAsync();
+        public UsuariosController(IConfiguration configuration)
+        {
+            Configuration = configuration;
+            conn = new SqlConnection(Configuration.GetConnectionString("BaseConnection"));
         }
+        //Petición tipo Get: api/Usuarios
+        
 
         [Route("[action]/")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<vistaCentro>>> GetCentros() 
+        public  String GetCentros()
         {
-            return await _context.centroInfo.FromSqlRaw("sp_obtenerGymVistas").ToListAsync();
+            List<vistaCentro> centros = new List<vistaCentro>();
+            conn.Open();
+            SqlCommand com = new SqlCommand
+            {
+
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_obtenerGymVistas"
+            };
+
+            SqlDataReader rdr = com.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    vistaCentro aux = new vistaCentro();
+                    aux.centro_id = rdr.GetInt32(0);
+                    aux.centro_logo_ruta = rdr.GetString(1);
+                    aux.centro_nombre = rdr.GetString(2);
+                    aux.centro_ubicacion = rdr.GetString(3);
+                    centros.Add(aux);
+                }
+
+            }
+            rdr.Close();
+            conn.Close();
+
+            string j = JsonConvert.SerializeObject(centros);
+            return j;
         }
 
         [Route("[action]/")]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ControlHorarios>>> ObtenerOcupacion(int id,String fecha)
+        [HttpPost]
+        public string ObtenerOcupacion([FromForm] int id, [FromForm] String fecha, [FromForm] String usuario)
         {
-            var idI = new SqlParameter
+           
+
+            List<ControlHorarios> centros = new List<ControlHorarios>();
+            conn.Open();
+            SqlCommand com = new SqlCommand
             {
-                ParameterName = "id",
-                Value = id
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_getHorarios"
+            };
+            com.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            com.Parameters.Add("@fecha", SqlDbType.VarChar).Value = fecha;
+            com.Parameters.Add("@usuario", SqlDbType.VarChar).Value = usuario;
+            SqlDataReader rdr = com.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    ControlHorarios aux = new ControlHorarios();
+                    aux.control_id = rdr.GetInt32(0);
+                    aux.control_capacidad = rdr.GetInt32(1);
+                    aux.control_hora_bloque = rdr.GetString(2);
+                    centros.Add(aux);
+                }
+            }
+            rdr.Close();
+            conn.Close();
+
+            string j = JsonConvert.SerializeObject(centros);
+            return j;
+
+        }
+
+
+        [Route("[action]/")]
+        [HttpGet]
+        public string ObtenerReservaciones(string usuario, String fecha1, String fecha2)
+        {
+            
+
+            List<ReservacionModel> categorias = new List<ReservacionModel>();
+            conn.Open();
+            SqlCommand com = new SqlCommand
+            {
+
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_obtenerReservaciones"
             };
 
-            var fechaI = new SqlParameter
+            com.Parameters.Add("@usuario", SqlDbType.VarChar).Value = usuario;
+            com.Parameters.Add("@fecha1", SqlDbType.Date).Value = fecha1;
+            com.Parameters.Add("@fecha2", SqlDbType.Date).Value = fecha2;
+
+
+            SqlDataReader rdr = com.ExecuteReader();
+            if (rdr.HasRows)
             {
-                ParameterName = "fecha",
-                Value = fecha
+                while (rdr.Read())
+                {
+                    ReservacionModel aux = new ReservacionModel();
+                    aux.centro_nombre = rdr.GetString(0);
+                    aux.control_hora_bloque = rdr.GetString(1);
+                    aux.control_hora_dia = rdr.GetString(2);
+                    categorias.Add(aux);
+                }
+                rdr.Close();
+                conn.Close();
+            }
+
+            string j = JsonConvert.SerializeObject(categorias);
+            return j;
+
+        }
+
+        [Route("[action]/")]
+        [HttpPost]
+        public string ObtenerClasesVirtuales([FromForm] string id)
+        {
+            
+
+            List<ClaseVitrual> r = new List<ClaseVitrual>();
+            conn.Open();
+            SqlCommand com = new SqlCommand
+            {
+
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_getClasesVirtuales"
             };
-            return await _context.ControlI.FromSqlRaw("sp_getHorarios @id,@fecha", idI,fechaI).ToListAsync();
+            com.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            ClaseVitrual cv = new ClaseVitrual();
+            
+            SqlDataReader rdr = com.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    cv.id = rdr.GetInt32(0);
+                    cv.nombre = rdr.GetString(3);
+                    cv.descripcion = rdr.GetString(4);
+                    cv.hora = rdr.GetString(1);
+                    cv.ruta = rdr.GetString(5);
+                    cv.fecha = rdr.GetString(2);
+                    r.Add(cv);                
+                }
+            }
+            else {
+                cv = null;
+            }
+            rdr.Close();
+            conn.Close();
+
+            string j = JsonConvert.SerializeObject(r);
+            return j;
+
+        }
+
+
+
+
+
+        [Route("[action]/")]
+        [HttpPost]
+        public string ObtenerCentroInfo([FromForm] string id)
+        {
+            
+
+            CentroInfo centro = new CentroInfo();
+            List<string> imagenes = new List<string>();
+            conn.Open();
+            SqlCommand comInfo = new SqlCommand
+            {
+
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_obtenerInfoGeneralCentro"
+            };
+
+            SqlCommand comImg = new SqlCommand
+            {
+
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_obtenerCentroImagenes"
+            };
+
+            comInfo.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            comImg.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+
+
+            SqlDataReader rdr = comInfo.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    centro.Nombre= rdr.GetString(0);
+                    centro.Descripcion= rdr.GetString(1);
+                    centro.Ubicacion= rdr.GetString(2);
+                    centro.Logo= rdr.GetString(3);
+                }
+                rdr.Close();
+                
+            }
+
+            SqlDataReader rdrImg = comImg.ExecuteReader();
+            if (rdrImg.HasRows)
+            {
+                while (rdrImg.Read())
+                {
+                    imagenes.Add(rdrImg.GetString(0));
+                }
+                rdrImg.Close();
+            }
+            conn.Close();
+            centro.Imagenes = imagenes;
+            string j = JsonConvert.SerializeObject(centro);
+            return j;
+
         }
 
 
         [Route("[action]/")]
         [HttpPost]
-        public async Task<ActionResult<String>> LoginToCentro([FromBody]LoginModel lm)
+        public string LoginToCentro([FromBody]LoginModel lm)
         {
-            var resutl=new SqlParameter { 
-                ParameterName="Result",
-                Value = 'E',
-                Direction = ParameterDirection.Output };
+
+            conn.Open();
+            SqlCommand com = new SqlCommand
+            {
+
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_loginToCentro"
+            };
+            com.Parameters.Add("@id", SqlDbType.Int).Value = lm.id;
+            com.Parameters.Add("@usuario", SqlDbType.VarChar).Value = lm.userName;
+            com.Parameters.Add("@pass", SqlDbType.VarChar).Value = lm.password;
+            com.Parameters.Add("@result", SqlDbType.VarChar,2);
+            com.Parameters["@result"].Direction = ParameterDirection.Output;
+
+            com.ExecuteNonQuery();
             
-            var idI = new SqlParameter
-            {
-                ParameterName = "id",
-                Value = lm.id
-            };
+            conn.Close();
 
-            var usuarioI = new SqlParameter
-            {
-                ParameterName = "usuario",
-                Value = lm.userName
-            };
+            
 
-            var passI = new SqlParameter
-            {
-                ParameterName = "pass",
-                Value = lm.password
-            };
-
-            var resultado= await _context.Database.ExecuteSqlRawAsync("sp_loginToCentro @id,@usuario,@pass,@result output", idI, usuarioI, passI,resutl);
-            return (String)resutl.Value;
+            return Convert.ToString(com.Parameters["@result"].Value);
         }
 
         [Route("[action]/")]
         [HttpPost]
-        public async Task<ActionResult<String>> Reservar([FromBody]ReservarModel rm)
+        public string Reservar([FromForm] string idH,[FromForm] string usuario)
         {
 
-            var idI = new SqlParameter
+            conn.Open();
+            SqlCommand com = new SqlCommand
             {
-                ParameterName = "id",
-                Value = rm.idH
-            };
 
-            var usuarioI = new SqlParameter
-            {
-                ParameterName = "usuario",
-                Value = rm.usuario
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "sp_reservar"
             };
 
 
-            var resultado = await _context.Database.ExecuteSqlRawAsync("sp_reservar @usuario,@idH",  usuarioI, idI);
-            
-            
-            
-            return rm.usuario;
+            com.Parameters.Add("@usuario", SqlDbType.VarChar).Value = usuario;
+            com.Parameters.Add("@idH", SqlDbType.Int).Value = idH;
+
+
+
+
+            SqlDataReader rdr = com.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Close();
+                conn.Close();
+                return "T";
+            }
+            return "F";
         }
-
-
-
-
-
-
     }
 }

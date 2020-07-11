@@ -29,6 +29,9 @@ namespace WebApiGym
         {
             services.AddDbContext<GymContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaseConnection")));
             services.AddControllers();
+            
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

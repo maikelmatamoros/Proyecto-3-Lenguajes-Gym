@@ -247,8 +247,6 @@ C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\bin\Debug\n
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.csprojAssemblyReference.cache
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.AssemblyInfoInputs.cache
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.AssemblyInfo.cs
-C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.csproj.CoreCompileInputs.cache
-C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.RazorTargetAssemblyInfo.cache
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.csproj.CopyComplete
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\staticwebassets\WebApiGym.StaticWebAssets.Manifest.cache
@@ -256,3 +254,8 @@ C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\n
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.dll
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.pdb
 C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.genruntimeconfig.cache
+C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.csproj.CoreCompileInputs.cache
+C:\Users\Maikel\Desktop\Proyecto 3 Lenguajes Gym\WebApiGym\WebApiGym\obj\Debug\netcoreapp3.1\WebApiGym.MvcApplicationPartsAssemblyInfo.cache

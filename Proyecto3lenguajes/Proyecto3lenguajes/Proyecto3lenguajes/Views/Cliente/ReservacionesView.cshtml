@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "ReservacionesView";
+    Layout = "_LayoutUsuario";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="col-md-3 col-sm-6" style="color:white; margin-left:auto;margin-right:auto;">Reservaciones</h1>
+
+        <h5 class="col-md-6 col-sm-6" style="color:white;margin-left:auto;margin-right:auto;margin-top:2%;">Seleccione un rango de fechas</h5>
+        <input class="form-control col-md-6 col-sm-6" style="margin-left:auto;margin-right:auto;margin-top:2%;" type="text" name="date" id="date" />
+        <button class="btn btn-primary col-md-6 col-sm-12" style="margin-left:auto;margin-right:auto;margin-top:2%;" id="Consultar">Consultar</button>
+
+    </div>
+</div>
+
+<div class="container ">
+    <div class="table-responsive">
+        <table id="ReservacionesTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Gimnasio</th>
+                    <th>Horario</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/Reservaciones.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
